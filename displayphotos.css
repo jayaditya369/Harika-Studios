@@ -1,0 +1,123 @@
+:root {
+
+    --background-color:white;
+    --box-color: lightgray;
+    --menu-text-color: white;
+    --text-color:rgb(59, 59, 59);           /*apple-black*/
+    --text-hover-color: rgb(218, 41, 28);   /*rogers-red*/
+    --film-border-color: green;
+    
+    --body-color: #e3e3e3;                  /* apple-gray*/
+    --menu-color: rgb(218, 41, 28);         /*rogers-red*/
+    --tag-color: rgb(218, 41, 28);
+
+    --global-font-size: 18px;
+    --global-font-weight: 400;
+
+}
+
+body{
+    background-color: var(--body-color);
+    font-family: "SF Pro Text","SF Pro Icons","Helvetica Neue","Helvetica","Arial",sans-serif;
+    font-size: var(--global-font-size);
+    font-weight: var(--global-font-weight);
+    margin: 0px;
+    position: relative;
+}
+
+.gallery{
+    position:relative;
+    margin:0px;
+    padding:0px;
+    width:100vw;
+    height:100vh;
+    background-color:black;
+    display:flex;
+    flex-direction:column;
+    z-index:0;
+    
+}
+.close{
+    position:fixed;
+    width:100vw;
+    height:70px;
+    z-index:3;
+    display:flex;
+    justify-content:flex-end;
+    
+    button{
+        padding:10px;
+        margin:20px;
+        display:flex;
+        align-items:center;
+    }
+}
+.sides{
+    width:100vw;
+    height:100vh;
+    display:flex;
+    flex-direction:row;
+    justify-content:space-between;
+    z-index:2;
+}
+.left-side
+{
+    cursor:pointer;
+    position:relative;
+    width:20vw;
+    height:100vh;
+    z-index:2;
+    
+}
+.right-side
+{
+    cursor:pointer;
+    position:relative;
+    width:20vw;
+    height:100vh;
+    z-index:2;
+    
+}
+#image{
+    position:fixed;
+    height:100vh;
+    width:100vw;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:1;
+
+    
+}
+@media only screen and (min-width:1300px)
+{
+    #image{
+        img{
+        height:100%;
+        max-height:100vh;
+        width:auto;
+        }
+    }
+}
+
+@media only screen and (min-width: 650px) and (max-width: 1300px)
+{
+    #image{
+        img{
+            width:100%;
+            max-width:100vw;
+            
+        }
+    }
+}
+
+@media only screen and (max-width: 650px)
+{
+    #image{
+        img{
+            width:100%;
+            max-width:100vw;
+            
+        }
+    }
+}

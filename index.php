@@ -1,24 +1,51 @@
 <!DOCTYPE html>
+<?php
+                $con = mysqli_connect("localhost","u150026636_jaya369","Harika@369", "u150026636_real_estate");
+			    if(mysqli_connect_errno())
+			    {
+				    echo "Failed to connect to MySQL: ". mysqli_connect_error();
+			    }
+			    if($_GET["n"])
+			    {
+			        $number=$_GET["n"];
+            
+			        $query = "SELECT * FROM houses WHERE house_id=$number";
+			        $result = mysqli_query($con,$query);
+			        if(mysqli_num_rows($result) > 0)
+			        {
+				        $row = mysqli_fetch_array($result);
+				        $h_pictures = $row["pictures"];
+				        $y_link = $row["youtube"];
+				        $l_link = $row["listing"];
+				        $h_street = $row["street"];
+				        $h_city = $row["city"];
+				        $h_bed = $row["bedrooms"];
+				        $h_bath = $row["bathrooms"];
+				        $h_park = $row["parking"];
+				        $h_type = $row["h_type"];
+				        $h_listing = $row["h_listing"];
+				        $h_realtor_id = $row["realtor_id"];
+			        }
+			        $query2 = "SELECT * FROM realtors WHERE r_id=$h_realtor_id";
+			        $result2 = mysqli_query($con,$query2);
+			        if(mysqli_num_rows($result2) > 0)
+			        {
+			            $row2 = mysqli_fetch_array($result2);
+			            $r_name = $row2["r_name"];
+			            $r_link = $row2["r_link"];
+			        }
+			    }
+?>
 <html lang="en" id="swup">
   <head>
-    <title>Real Estate Photography in GTA</title>
-    <link rel="icon" type="image/x-icon" href="logo.png">
-    
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <meta name="description" content="A Production Studio specialized in Real-Estate and AirBNB Photography located in GTA, Ontario." />
-    <meta name="keywords" content="Photography, Photos, Real Estate, Real Estate Photography" />
-    <meta property="og:locale" content="en_US" />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Real Estate Photography in GTA" />
-    <meta property="og:description" content="A Production Studio specialized in Filmmaking, Real-Estate and AirBNB Photography, Virtual Tours located in GTA, Ontario." />
-    <meta property="og:url" content="https://www.harikastudios.com/" />
-    <meta property="og:site_name" content="Harika Studios" />
-    
     <link rel="stylesheet" href="index.css">
-    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <link rel="icon" type="image/x-icon" href="logo.png">
+    <title><?php echo $h_street." | Harika Studios"; ?></title>
+    <script src="https://kit.fontawesome.com/8868d161da.js" crossorigin="anonymous"></script>
   </head>
-  <body>
+  <body onresize="getsize();" onload="getsize();">
     <div class="menu-bar-container">
         <div class="menu-bar">
             <div class="left-box">
@@ -34,87 +61,125 @@
         </div>
     </div>
     <div class="main-container">
-        <br><h2 style="margin-bottom:0px;margin-left:20px;">Our Gallery</h2>
-        <div class="main-realestate">
-        
-        <?php
-		    $con = mysqli_connect("localhost","u150026636_jaya369","Harika@369", "u150026636_real_estate");
-			if(mysqli_connect_errno())
-			{
-				echo "Failed to connect to MySQL: ". mysqli_connect_error();
-			}
-
-			$query = "SELECT * FROM houses";
-			$result = mysqli_query($con,$query);
-			if(mysqli_num_rows($result) > 0){
-				while($row = mysqli_fetch_array($result))
-				{
-					static $count=1;
-					$h_street = $row["street"];
-					$h_city = $row["city"];
-					$h_type = $row["type"];
-					$h_youtube = $row["youtube"];
-					$h_id = $row["house_id"];
-
-                    echo "
-                    <div class='box-container' onclick='openGallery(".$h_id.")'>";
-                    echo "<script>function openGallery(x) { location.href='https://www.harikastudios.com/realestate/index.php?n='+x; }</script>";
-                    if($h_type=="Sale")
-                    {
-                        echo "<div class='top-tag sale'>For ".$h_type."</div>";
-                    }
-                    else if($h_type=="Rent")
-                    {
-                        echo "<div class='top-tag rent'>For ".$h_type."</div>";
-                    }
-                    else if($h_type=="Sold")
-                    {
-                        echo "<div class='top-tag sold'>".$h_type."</div>";
-                    }
-                        echo "
-                        <div class='image-container'>
-                            <img loading='lazy' src='realestate/".$h_id.".jpg'>
-                        </div>
-                        <div class='title'>".$h_street."</div>
-                        <div class='city'>".$h_city."</div>
-                        <div class='service'>
-                            <span class='tag'>#Photos</span>";
-                            
-                    if($h_youtube)
-                    {
-                        echo "<span class='tag'>#Home Tour</span>";
-                    }
-                    if($h_type=="Sale"|| $h_type=="Sold")
-                    {
-                            echo "
-                            <span class='tag'>#Listing</span>";
-                    }
-                    echo "
-                        </div>
-                    </div>";
+        <div class="options-container">
+                <div class="options" ><a class="active" href="#" style="color: var(--menu-text-color);"><i class="fa-solid fa-circle-info"></i> Overview</a></div>
+                <div class="options" ><a href="/realestate/gallery.php?n=<?php echo $number; ?>"><i class="fa-solid fa-image"></i> Gallery</a></div>
+                <?php 
+                if($y_link)
+                {
+                    echo " <div class='options' ><a href='/realestate/hometour.php?n=".$number."'><i class='fa-solid fa-video'></i> Home Tour</a></div> ";
                 }
-            }
-        ?>
-          
-           
+                ?>
         </div>
-        
-    </div>
-    <div class="section2">
-        <div class="matter">
-            <div class="heading"><b>How To Prepare Your Home For Real-Estate Photography?</b></div>
-            <div class="desc">
-                1. <b>Declutter:</b> <div class="inner-desc">Remove clutter from surfaces, such as countertops, kitchen benches, and bathroom counters</div>
-                2. <b>Depersonalize:</b> <div class="inner-desc">Remove personal items like photos and family trinkets</div>
-                3. <b>Clean:</b> <div class="inner-desc">Vacuum and dust, and clean mirrors and windows</div>
-                4. <b>Make beds:</b> <div class="inner-desc">Straighten linens, fluff pillows, and make the beds</div>
-                5. <b>Hide trash:</b> <div class="inner-desc">Store trashcans in closets or the garage</div>
-                6. <b>Turn on lights:</b> <div class="inner-desc">Check that all lights work and turn them on before the photographer arrives</div>
-                7. <b>Open windows:</b> <div class="inner-desc">Open blinds or window shades to let in natural light</div>
-                8. <b>Prepare the yard:</b> <div class="inner-desc">Mow the lawn, weed, remove leaves, and move vehicles from the outside of the property</div>
-                9. <b>Choose the right time of day:</b> <div class="inner-desc">Pick a clear, bright day when the front of the house is well lit</div>
+            
+        <div class="details-realestate" id="b1">
+            <div class="details-container">
+                <div class="details">
+                    <div class="first-line">
+                        <div class="house-address">
+                            <i class="fa-solid fa-house icons"></i>
+                            <div class="house-details">
+                                <div class="address"><?php echo $h_street.", ".$h_city."<br>"; ?></div>
+                                <div class="type"><?php echo $h_type; ?></div>
+                            </div>
+                        </div>
+                        <!--<div class="share-list">
+                            <i class="fa-solid fa-arrow-up-from-bracket"></i>
+                        </div>-->
+                    </div>
+                    <div class="house-container">
+                        <div class="metrics-container">
+                            <div class="metrics">
+                                <i class="fa-solid fa-bed"></i>
+                                <div class="m-number"><?php echo $h_bed; ?></div>
+                            </div>
+                            <div class="m-title">Bedrooms</div>
+                        </div>
+                        
+                        <div class="metrics-container">
+                            <div class="metrics">
+                                <i class="fa-solid fa-bath"></i>
+                                <div class="m-number"><?php echo $h_bath; ?></div>
+                            </div>
+                            <div class="m-title">Bathrooms</div>
+                        </div>
+                        
+                        <div class="metrics-container">
+                            <div class="metrics">
+                                <i class="fa-solid fa-car"></i>
+                                <div class="m-number"><?php echo $h_park; ?></div>
+                            </div>
+                            <div class="m-title">Parking</div>
+                        </div>
+                        
+                        <!--<div class="metrics-container">
+                            <<div class="metrics">
+                                <i class="fa-solid fa-layer-group"></i>
+                                <div class="m-number">600 sqft</div>
+                            </div>
+                            <div class="m-title">Total Area</div>
+                        </div>-->
+                        
+                    </div>
+                    
+                    <!-- 
+                    <i class="fa-solid fa-location-arrow"></i>
+                    <i class="fa-solid fa-phone"></i>
+                    <i class="fa-solid fa-user"></i> <br> -->
+                    
+                </div>
+                <div class="links">
+                    <button id="button1" onclick="copyText();"></button>
+                    <button id="button2" onclick="location.href='<?php echo $h_listing; ?>';" ></button>
+                    <button id="button3" onclick="location.href='<?php echo $r_link; ?>';"></button>
+                </div>
             </div>
         </div>
-    </div>
+        
+        <script>
+            function getsize()
+            {
+                var w = window.innerWidth;
+                var x= document.getElementById("button1");
+                var y = document.getElementById("button2");
+                var z = document.getElementById("button3");
+                
+                if(w>=715)
+                {
+                    x.innerHTML = "<i class='fa-solid fa-share'></i> Share";
+                    y.innerHTML = "<i class='fa-solid fa-file'></i> Listing";
+                    z.innerHTML = "<i class='fa-solid fa-user'></i> Realtor";
+                    
+                    x.style.width = "180px";
+                    y.style.width = "180px";
+                    z.style.width = "180px";
+                }
+                else
+                {
+                    x.innerHTML = "<i class='fa-solid fa-share'></i>";
+                    y.innerHTML = "<i class='fa-solid fa-file'></i>";
+                    z.innerHTML = "<i class='fa-solid fa-user'></i>";
+                    x.style.width = "50px";
+                    y.style.width = "50px";
+                    z.style.width = "50px";
+                }
+            }
+            
+            function copyText()
+            {
+                // Get the text field
+                var text = "https://www.harikastudios.com/realestate/index.php?n=<?php echo $number; ?>";
+
+                // Select the text field
+                //text.select();
+                // text.setSelectionRange(0, 99999); // For mobile devices
+
+                // Copy the text inside the text field
+                navigator.clipboard.writeText(text);
+  
+                // Alert the copied text
+                alert("Copied the text: " + text);
+            }
+        </script>
   </body>
 </html>

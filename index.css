@@ -7,7 +7,7 @@
     --text-hover-color: rgb(218, 41, 28);   /*rogers-red*/
     --film-border-color: green;
     
-    --body-color: #e3e3e3;                  /* apple-gray */
+    --body-color: #e3e3e3;                  /* apple-gray*/
     --menu-color: rgb(218, 41, 28);         /*rogers-red*/
     --tag-color: rgb(218, 41, 28);
 
@@ -19,7 +19,6 @@
 body{
     background-color: var(--body-color);
     font-family: "SF Pro Text","SF Pro Icons","Helvetica Neue","Helvetica","Arial",sans-serif;
-    /*font-family: 'Montserrat';*/
     font-size: var(--global-font-size);
     font-weight: var(--global-font-weight);
     margin: 0px;
@@ -102,7 +101,7 @@ body{
     }
     .action:hover{
         background-color: var(--menu-color);
-        color:var(--menu-text-color);
+        color: var(--menu-text-color);
         border: 2px solid var(--menu-text-color);
     }
 
@@ -116,333 +115,285 @@ body{
 
 
 }
-.main-container
-{
+.main-container{
     position: relative;
-    max-width: 980px;
+    /*max-width: 980px;*/
     width:100%;
     /*padding-left:22px;
     padding-right:22px;*/
     margin:auto;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     
     color: var(--text-color);
     
-
-
-    .main-about{
+    .options-container{
+        position:relative;
+        width:100%;
+        max-width:450px;
+        margin: auto;
+        height:70px;
+        display:flex;
+        justify-content: space-around;
+        align-items: center;
+        font-weight: 500;
+        
+        .active
+        {
+            color: var(--menu-text-color);
+            background-color: var(--menu-color);
+        }
+        
+        .options{
+            
+            a{
+                text-decoration:none;
+                color:var(--text-color);
+                padding-left:20px;
+                padding-right:20px;
+                padding-top:8px;
+                padding-bottom:8px;
+                border-radius: 20px;
+            }
+        }
+        
+        
+        
+        .options:hover > a{
+            color: var(--menu-text-color);
+            background-color: var(--menu-color);
+        }
+    
+    }
+    .details-realestate{
         position: relative;
-        margin:20px;
         display: flex;
         flex-direction: row;
-        justify-content: space-between;
-
-        img{
+        justify-content: center;
+        align-items: center;
+        
+        .details-container{
+            position:relative;
             width:100%;
-            max-width: 320px;
-            float: right;
-        }
-        .bio{
-            text-align: justify;
-            width:60%;
-            padding-top: 240px;
-            font-size: 22px;
-            color:rgb(86, 86, 86);
-
-            b{
-                color:var(--text-color);
+            max-width:980px;
+            background-color: var(--background-color);
+            border-radius:20px;
+            margin-left:20px;
+            margin-right:20px;
+            display:flex;
+            flex-direction:row;
+            justify-content:space-between;
+            align-items:center;
+            
+            .links{
+                display:flex;
+                flex-direction:column;
+                justify-content:center;
+                align-items:center;
+                padding: 20px 20px 20px 0px;
+                
+                button{
+                    cursor:pointer;
+                    padding:10px;
+                    margin:5px;
+                    border-radius:10px;
+                    border:none;
+                    font-size:var(--global-font-size);
+                    font-weight:500;
+                    background-color:green;
+                    color:white;
+                }
+                
             }
-            button{
-                padding: 5px;
-                border-radius: 5px;
-                margin:5px;
-                font-size: var(--global-font-size);
-                cursor: pointer;
-                background-color: var(--text-hover-color);
-                float: right;
+            .details
+            {
+                padding:20px 0px 20px 20px;
+                display:flex;
+                flex-direction:column;
+                justify-content: space-between;
+                align-items:flex-start;
+                
+                .firstline
+                {
+                    position: relative;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: left;
+                    align-items: center;
+                    padding:5px;
+                }
+                .house-address{
+                    position: relative;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: left;
+                    align-items: center;
+                    
+                    .icons
+                    {
+                        display: flex;
+                        font-size:48px;
+                    }
+                    .house-details
+                    {
+                        position: relative;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: flex-start;
+                        padding-left:10px;
+                        
+                        .address
+                        {
+                            position: relative;
+                            font-size:24px;
+                            font-weight: bold;
+                        }
+                        .type{
+                            position:relative;
+                            font-size:16px;
+                        }
+                    }
+                }
+                .house-container
+                {
+                    position: relative;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: flex-start;
+                    align-items: center;
+                    padding-top:10px;
+                }
+                .metrics-container
+                {
+                    position: relative;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    margin:5px;
+                    padding:10px;
+                    border-radius:10px;
+                    background-color: var(--body-color);
+                    
+                    .metrics
+                    {
+                        position:relative;
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: center;
+                        align-items: center;
+                        
+                        font-weight:bold;
+                        
+                        .m-number{
+                            padding-left:10px;
+                        }
+                    }
+                    .m-title
+                    {
+                        position:relative;
+                    }
+                }
             }
         }
-
         
     }
-    .main-realestate{
+    
+    .pics-realestate
+    {
         position: relative;
-        margin-top: 20px;
-        display: flex;
+        /*margin-top: 20px;*/
+        display:flex;
         flex-direction: row;
         justify-content: center;
         align-items: center;
         flex-wrap: wrap;
         
-
-        .box-container
-        {
-            position: relative;
-            width: 300px;
-            /*height: 260px;*/
-            margin:10px;
-            background-color: white;
-            box-shadow: 0px 0px 5px;
-            border-radius: 15px;
+        .image-container{
+            cursor:pointer;
+            position:relative;
+            width:500px;
+            height:333px;
+            border-radius:10px;
             overflow: hidden;
-            cursor: pointer;
+            margin:5px;
             
-            .top-tag
-            {
-                position: absolute;
-                z-index:2;
-                right:0;
-                font-size:14px;
-                color:white;
-                padding:7px;
-                border-bottom-left-radius: 8px;
-            }
             
-            .sale{
-                background-color: green;
-            }
-            
-            .rent{
-                background-color: blue;
-            }
-            
-            .sold{
-                background-color: var(--text-color);
-            }
-
-            .image-container{
+            img{
                 position: relative;
-                
-                img{
-                    position: relative;
-                    width: 100%;
-                    height: 174px;
-                }
+                width:500px;
+                height:333px;
+                object-fit:cover;
+            
             }
-
-            .title{
-                display: flex;
-                justify-content: center;
-                font-size: 25px;
-                font-weight: 800;
-            }
-            .city{
-                display: flex;
-                justify-content: center;
-            }
-            .service{
-                display: flex;
-                justify-content: center;
-
-                .tag{
-                    background-color: var(--tag-color);
-                    padding:5px;
-                    margin:2px;
-                    margin-bottom:10px;
-                    font-size: 12px;
-                    color:white;
-                    border-radius: 5px;
-                    cursor:pointer;
-                }
-            }
+            
         }
-        
-        .box-container:hover{
-            box-shadow: 0px 0px 10px;
-        }
-        
-        
         
         
     }
-    .main-address{
+    .hometour-realestate
+    {
         position: relative;
-        display: flex;
-        flex-direction: column;
-
+        display:flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
         
-
-        .video{
-            display:flex;
-            flex-direction: row;
-
-            .yt-video
-            {
-                border: 0px;
-                border-radius: 20px;
-            }
-
-            .description{
-                margin-left: 20px;
-                margin-right:20px;
-                width: 300px;
-                max-height: 360px;
-                
-
-                .head{
-                    color: var(--text-hover-color);
-                }
-                
-                td{
-                    vertical-align: top;
-                    margin:5px;
-                }
-                button{
-                    padding:10px;
-                    border-radius: 5px;
-                    border:none;
-                    margin-top: 20px;
-                    cursor: pointer;
-                    font-size: 14px;
-                    margin-right:10px;
-
-                    a{
-                        text-decoration: none;
-                        color: var(--background-color);
-                    }
-                }
-            }
-        }
-        
-    }
-
-    .main-films{
-        position: relative;
-        margin:20px;
-        
-        .filter{
-            display: flex;
-            flex-direction: row;
-            justify-content: left;
-            align-items: center;
-
-            label{
-                margin-right: 10px;
-                margin-left: 10px;
-                
-            }
-            select{
-                padding: 5px;
-                width:100px;
-                border-radius: 5px;
-            }
-        }
-
-        .videos-container{
-            position: relative;
-            margin-top: 20px;
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-
-            .videos{
-                width:288px;
-                height:162px;
-                background-color: var(--background-color);
-                margin: 10px;
-                border-radius: 20px;
-                border: 2px solid var(--background-color);
-                overflow: hidden;
-
-                img{
-                    position: relative;
-                    z-index: 1;
-                    max-width: 100%;
-                    transition: 0.1s ease-in-out;
-                    cursor: pointer;
-                }
-                .details-container{
-                    position: relative;
-                    z-index: 2;
-                    margin-top: -167px;
-                    height: 162px;
-                    width:288px;
-                    display: none;
-                    flex-direction: column;
-                    justify-content: space-evenly;
-                    align-items: center;
-                    transition: 0.1s ease-in-out;
-                    cursor: pointer;
-
-                    .title-container{
-                        position: relative;
-                        display: flex;
-                        flex-direction: column;
-                        justify-content: center;
-                        align-items: center;
-
-                        .title{
-                            font-size: 24px;
-                            font-weight: bold;
-                        }
-                        .release-date{
-                            font-size: 12px;
-                            font-weight: 300;
-                        }
-                    }
-                    .genre, .roles{
-                        font-size: 14px;
-                    }
-                }
-
-                
-            }
-            .videos:hover
-            {
-                border: 2px solid var(--film-border-color);
-
-                img{
-                    transform: scale(1.010);
-                    opacity: 0.2;
-                    
-                }
-                .details-container{
-                    display: flex;
-                }
-            }
-        }
-    }
-}
-
-.section2
-{
+        .video-container{
             position:relative;
             width:100%;
-            height: auto;
-            background-color: white;
-            margin-top:20px;
+            max-width:980px;
             
-            .matter{
-                position:relative;
-                display:flex;
-                flex-direction:column;
-                margin:auto;
-                width:fit-content;
-                max-width:980px;
-                padding:20px;
-                color: var(--text-color);
-                
-                .heading
-                {
-                    font-size:32px;
-                    margin-left:20px;
-                    margin-right:20px;
-                }
-                .desc{
-                    margin:20px;
-                    
-                    .inner-desc{
-                        margin-left:20px;
-                        margin-bottom:10px;
-                    }
-                }
+            .video{
+                padding-left:20px;
+                padding-right:20px;
             }
-}
+        }
+    }
 
+}
+@media only screen and (min-width:1024px)
+{
+    .main-container
+    {
+        .details-realestate
+        {
+            .metrics
+            {
+                font-size:28px;
+            }
+        }
+    }
+}
 
 @media only screen and (min-width: 650px) and (max-width: 1024px)
 {
     body{
         font-size:16px;
+    }
+    .main-container{
+        
+        .pics-realestate{
+            
+            .image-container{
+                width:300px;
+                height:200px;
+                
+                img{
+                    width:300px;
+                    height:200px;
+                }
+            }
+        }
+        .details-realestate
+        {
+            .metrics
+            {
+                font-size:24px;
+            }
+        }
     }
     .menu-bar-container{
         height:60px;
@@ -458,6 +409,51 @@ body{
      body{
         font-size:16px;
     }
+    .main-container{
+        
+        .pics-realestate{
+            
+            .image-container{
+                position: relative;
+                width:150px;
+                height:100px;
+                overflow: hidden;
+                margin:5px;
+                
+                img{
+                    position: relative;
+                    width:150px;
+                    height:100px;
+                    object-fit:cover;
+                }
+            }
+        }
+        .options-container
+        {
+            height:50px;
+            
+            .options
+            {
+                
+                a
+                {
+                    padding-left:10px;
+                    padding-right:10px;
+                    padding-top:5px;
+                    padding-bottom:5px;
+                    border-radius: 20px;
+                    font-size:14px;
+                }
+            }
+        }
+        .details-realestate
+        {
+            .metrics
+            {
+                font-size:20px;
+            }
+        }
+    }
     .menu-bar-container{
         height:60px;
         
@@ -466,5 +462,5 @@ body{
         }
     }
     
+    
 }
-
